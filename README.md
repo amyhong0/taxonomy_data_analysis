@@ -1,4 +1,5 @@
 # E-commerce Taxonomy Optimization & Search Relevance Data Analysis
+# 이커머스 상품 분류 체계(Taxonomy) 최적화 및 검색 연관성 데이터 분석
 
 ## 📌 개요 (Overview)
 이커머스 플랫폼의 핵심인 상품 분류 체계(Taxonomy)와 고객의 검색 의도(Search Intent) 간의 정합성을 진단하기 위한 데이터 분석 프로젝트입니다. 단순한 데이터 추출을 넘어, 상품 메타데이터와 카테고리 매핑 간의 오류를 발견하고 검색 품질(Search Relevance)을 높이기 위한 데이터 정제 및 최적화 로드맵을 구축했습니다.
@@ -38,6 +39,8 @@
 2. **비즈니스 정렬:** 정제 기준을 '기술적 정확성'뿐만 아니라 '고객의 검색 행동'이라는 비즈니스 관점에서 정의함.
 3. **지속 가능한 구조:** Taxonomy는 고정된 체계가 아니라, 검색 트렌드에 맞춰 반복적으로 최적화되어야 하는 '살아있는 구조'임을 이해함.
 
+> **"본 프로젝트는 데이터를 통해 비즈니스 문제를 정의하고, 정교한 데이터 파이프라인을 구축하며, 전략적인 최적화 인사이트를 도출하는 저의 분석 및 엔지니어링 역량을 보여줍니다."**
+
 ---
 
 # E-commerce Taxonomy Optimization & Search Relevance Data Analysis
@@ -58,14 +61,11 @@ This project evaluates the alignment between **product taxonomy structures and a
 ## 📊 Project Workflow
 
 ### 1. Data Cleaning (SQL Data Wrangling)
-Constructed a multi-step refinement pipeline to extract meaningful product attributes from raw product titles.
-* **Keyword Strategy:** Implemented a 'Second-Word Extraction' logic to mitigate brand bias and focus on inherent product attributes (e.g., Wireless, Jeans).
+* **Keyword Strategy:** Implemented a 'Second-Word Extraction' logic to mitigate brand bias and focus on inherent product attributes.
 * **Refinement:** Applied heuristic rules (length constraints, numerical pattern matching) and stop-word management to isolate high-value data.
 
 ### 2. Visualization & Diagnosis (Tableau Heatmap)
-Utilized Tableau heatmaps to visualize the mapping relationship between product categories and extracted keywords.
-* **Ambiguity Detection:** Identified scattered keywords that degrade search ranking.
-* **Dump Category Diagnosis:** Pinpointed categories with weak structural definitions that need restructuring.
+Utilized Tableau heatmaps to visualize the mapping relationship between product categories and extracted keywords, pinpointing structural defects such as "Ambiguous Mapping" and "Dump Categories."
 ![Taxonomy Heatmap](images/taxonomy_heatmap.png)
 
 ### 3. Technical Roadmap (Python & TF-IDF)
@@ -76,8 +76,6 @@ Proposed an automated pipeline using **TF-IDF** to handle large-scale datasets, 
 ## 🔍 Key Insights
 1. **Data Alignment:** Validated taxonomy reliability by identifying consistent mapping patterns across primary product categories.
 2. **Business-Oriented Cleaning:** Defined data refinement criteria based on search behavior and category-specific discriminative power.
-3. **Scalability:** Demonstrated the ability to transition from heuristic-based manual cleaning to automated statistical models (TF-IDF) for enterprise-level data processing.
-
----
+3. **Scalability:** Demonstrated the ability to transition from heuristic-based manual cleaning to automated statistical models for enterprise-level data processing.
 
 > **"This project demonstrates my ability to define business problems through data, engineer robust refinement pipelines, and provide strategic optimization insights."**
