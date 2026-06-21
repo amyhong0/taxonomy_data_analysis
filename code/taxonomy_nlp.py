@@ -1,21 +1,34 @@
 import pandas as pd
-import spacy
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-
-# NLP 자동화 키워드 추출 로직
-def automate_taxonomy_refinement(csv_path):
-    # nlp 모델 로드
-    nlp = spacy.load("en_core_web_sm")
+def get_category_key_attributes(csv_path, top_n=10):
+    """
+    TF-IDF를 활용하여 각 카테고리별로 변별력이 높은 핵심 속성 키워드를 추출합니다.
+    """
+    # 데이터 로드
     df = pd.read_csv(csv_path)
+    
+    # 1. 카테고리별로 상품명을 하나로 합침 (문서 단위 생성)
+    category_data = df.groupby('main_category')['name'].apply(lambda x: ' '.join(x)).reset_index()
+    
+    # 2. TF-IDF Vectorizer 설정
+    # stop_words='english'를 통해 기본 불용어 처리, max_features로 상위 키워드 제한
+    vectorizer = TfidfVectorizer(stop_words='english', max_features=1000)
+    tfidf_matrix = vectorizer.fit_transform(category_data['name'])
+    
+    # 3. 결과 데이터를 데이터프레임으로 변환
+    feature_names = vectorizer.get_feature_names_out()
+    tfidf_df = pd.DataFrame(tfidf_matrix.toarray(), columns=feature_names, index=category_data['main_category'])
+    
+    # 4. 각 카테고리별로 가중치가 높은 상위 N개 키워드 추출
+    results = []
+    for category in tfidf_df.index:
+        top_keywords = tfidf_df.loc[category].sort_values(ascending=False).head(top_n)
+        for keyword, score in top_keywords.items():
+            results.append({'Category': category, 'Keyword': keyword, 'Score': score})
+            
+    return pd.DataFrame(results)
 
-    def extract_keywords(text):
-        doc = nlp(text.lower())
-        # 명사(NOUN)와 형용사(ADJ)만 추출하여 속성 키워드로 정의
-        keywords = [token.text for token in doc if token.pos_ in ['NOUN', 'ADJ'] and not token.is_stop]
-        return keywords[1] if len(keywords) > 1 else None
-
-    df['extracted_keyword'] = df['name'].apply(extract_keywords)
-    return df.dropna()
-
-
-# 이 코드는 향후 데이터 규모 확장 시 도입할 NLP 기반 파이프라인의 프로토타입입니다.
+# 사용 예시
+# analysis_result = get_category_key_attributes('amazon_products.csv')
+# print(analysis_result)
