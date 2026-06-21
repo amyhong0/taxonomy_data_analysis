@@ -38,6 +38,22 @@
 2. **비즈니스 정렬:** 정제 기준을 '기술적 정확성'뿐만 아니라 '고객의 검색 행동'이라는 비즈니스 관점에서 정의함.
 3. **지속 가능한 구조:** Taxonomy는 고정된 체계가 아니라, 검색 트렌드에 맞춰 반복적으로 최적화되어야 하는 '살아있는 구조'임을 이해함.
 
+---
+
+## 🔍 히트맵 분석 결과 (Heatmap Analysis Insights)
+
+히트맵 시각화를 통해 도출한 Taxonomy의 주요 개선 인사이트는 다음과 같습니다.
+
+### 1. 정합성 구간 (Success Alignment)
+* **`accessories` - `jeweller`, `gold`, `gems`**: 이 구간은 키워드와 카테고리 간 매핑이 매우 진하게 나타납니다. 이는 고객의 검색 의도와 시스템의 분류가 완벽하게 일치하는 성공적인 분류 사례로, 향후 타 카테고리 최적화의 벤치마크로 활용 가능합니다.
+
+### 2. 구조적 결함 진단 (Structural Anomaly Diagnosis)
+* **`stores` 카테고리의 모호성 (Dump Category):** 분석 결과, `stores` 카테고리에는 오직 `analog` 키워드만 매핑되어 있습니다. 이는 전형적인 '덤프 카테고리(Dump Category)'의 징후로, 고객에게는 아무런 가치를 제공하지 못하는 모호한 분류입니다. 해당 데이터들은 다른 전문 카테고리로 통합하거나 재분류해야 할 최우선 개선 과제입니다.
+
+### 3. 매핑 모호성 탐지 (Mapping Ambiguity)
+* **중복 키워드 이슈:** `analog`와 같은 특정 속성 키워드가 `accessories`와 `stores` 카테고리에 분산되어 있습니다. 이는 시스템상 Taxonomy의 역할 정의가 명확하지 않음을 의미하며, 검색 결과의 집중도를 높이기 위해 매핑 로직을 정교화할 필요가 있습니다.
+
+
 > **"본 프로젝트는 데이터를 통해 비즈니스 문제를 정의하고, 정교한 데이터 파이프라인을 구축하며, 전략적인 최적화 인사이트를 도출하는 저의 분석 및 엔지니어링 역량을 보여줍니다."**
 
 ---
@@ -76,5 +92,20 @@ Proposed an automated pipeline using **TF-IDF** to handle large-scale datasets, 
 1. **Data Alignment:** Validated taxonomy reliability by identifying consistent mapping patterns across primary product categories.
 2. **Business-Oriented Cleaning:** Defined data refinement criteria based on search behavior and category-specific discriminative power.
 3. **Scalability:** Demonstrated the ability to transition from heuristic-based manual cleaning to automated statistical models for enterprise-level data processing.
+
+---
+
+## 🔍 Heatmap Analysis Insights
+
+Key insights derived from the heatmap analysis are as follows:
+
+### 1. Alignment Success
+* **`accessories` - `jeweller`, `gold`, `gems`**: This region shows strong mapping density, indicating that the taxonomy classification perfectly matches customer search intent. This serves as a benchmark for optimizing other product categories.
+
+### 2. Structural Anomaly Diagnosis
+* **Ambiguity in 'stores' (Dump Category):** The `stores` category only maps to the `analog` keyword, exhibiting the characteristics of a "Dump Category." It lacks descriptive product attributes, providing little value to customers. These items should be migrated to specialized categories as a top priority for restructuring.
+
+### 3. Mapping Ambiguity
+* **Fragmented Mapping:** Keywords like `analog` appear scattered across multiple categories (`accessories` and `stores`). This indicates overlapping category definitions and necessitates a refined mapping logic to concentrate search results and improve relevance.
 
 > **"This project demonstrates my ability to define business problems through data, engineer robust refinement pipelines, and provide strategic optimization insights."**
