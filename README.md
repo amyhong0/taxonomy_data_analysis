@@ -1,4 +1,3 @@
-# E-commerce Taxonomy Optimization & Search Relevance Data Analysis
 # 이커머스 상품 분류 체계(Taxonomy) 최적화 및 검색 연관성 데이터 분석
 
 ## 📌 개요 (Overview)
